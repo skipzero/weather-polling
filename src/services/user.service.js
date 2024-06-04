@@ -1,17 +1,14 @@
 const httpStatus = require('http-status');
-const { User } = require('../models');
+const { Weather } = require('../models');
 const ApiError = require('../utils/ApiError');
 
 /**
- * Create a user
- * @param {Object} userBody
+ * Create a weather
+ * @param {Object} weatherBody
  * @returns {Promise<User>}
  */
-const createUser = async (userBody) => {
-  if (await User.isEmailTaken(userBody.email)) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
-  }
-  return User.create(userBody);
+const createWeather = async (weatherBody) => {
+  return Weather.create(weatherBody);
 };
 
 /**
@@ -23,67 +20,55 @@ const createUser = async (userBody) => {
  * @param {number} [options.page] - Current page (default = 1)
  * @returns {Promise<QueryResult>}
  */
-const queryUsers = async (filter, options) => {
-  const users = await User.paginate(filter, options);
-  return users;
+const queryWeather = async (filter, options) => {
+  const weather = await Weather.paginate(filter, options);
+  return weather;
 };
 
 /**
- * Get user by id
+ * Get weather by id
  * @param {ObjectId} id
  * @returns {Promise<User>}
  */
-const getUserById = async (id) => {
-  return User.findById(id);
+const getWeatherById = async (id) => {
+  return Weather.findById(id);
 };
 
 /**
- * Get user by email
- * @param {string} email
- * @returns {Promise<User>}
- */
-const getUserByEmail = async (email) => {
-  return User.findOne({ email });
-};
-
-/**
- * Update user by id
+ * Update weather by id
  * @param {ObjectId} userId
  * @param {Object} updateBody
  * @returns {Promise<User>}
  */
-const updateUserById = async (userId, updateBody) => {
-  const user = await getUserById(userId);
-  if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+const updateWeatherById = async (weatherId, updateBody) => {
+  const weather = await getWeatherById(weatherId);
+  if (!weather) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Weather not found');
   }
-  if (updateBody.email && (await User.isEmailTaken(updateBody.email, userId))) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
-  }
-  Object.assign(user, updateBody);
-  await user.save();
-  return user;
+
+  Object.assign(weather, updateBody);
+  await weather.save();
+  return weather;
 };
 
 /**
- * Delete user by id
- * @param {ObjectId} userId
+ * Delete weather by id
+ * @param {ObjectId} weatherId
  * @returns {Promise<User>}
  */
-const deleteUserById = async (userId) => {
-  const user = await getUserById(userId);
-  if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+const deleteWeatherById = async (weatherId) => {
+  const weather = await getWeatherById(weatherId);
+  if (!weather) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Weather not found');
   }
-  await user.remove();
-  return user;
+  await weather.remove();
+  return weather;
 };
 
 module.exports = {
-  createUser,
-  queryUsers,
-  getUserById,
-  getUserByEmail,
-  updateUserById,
-  deleteUserById,
+  createWeather,
+  queryWeather,
+  getWeatherById,
+  updateWeatherById,
+  deleteWeatherById,
 };
