@@ -6174,17 +6174,17 @@ swagger-parser@10.0.2:
   dependencies:
     "@apidevtools/swagger-parser" "10.0.2"
 
-swagger-ui-dist@^3.18.1:
-  version "3.51.1"
-  resolved "https://registry.npmjs.org/swagger-ui-dist/-/swagger-ui-dist-3.51.1.tgz"
-  integrity sha512-df2mEeVgnJp/FcXY3DRh3CsTfvHVTaO6g3FJP/kfwhxfOD1+YTXqBZrOIIsYTPtcRIFBkCAto0NFCxAV4XFRbw==
+swagger-ui-dist@>=4.11.0:
+  version "5.17.14"
+  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-5.17.14.tgz#e2c222e5bf9e15ccf80ec4bc08b4aaac09792fd6"
+  integrity sha512-CVbSfaLpstV65OnSjbXfVd6Sta3q3F7Cj/yYuvHMp1P90LztOLs6PfUnKEVAeiIVQt9u2SaPwv0LiH/OyMjHRw==
 
 swagger-ui-express@^4.1.6:
-  version "4.1.6"
-  resolved "https://registry.npmjs.org/swagger-ui-express/-/swagger-ui-express-4.1.6.tgz"
-  integrity sha512-Xs2BGGudvDBtL7RXcYtNvHsFtP1DBFPMJFRxHe5ez/VG/rzVOEjazJOOSc/kSCyxreCTKfJrII6MJlL9a6t8vw==
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/swagger-ui-express/-/swagger-ui-express-4.6.3.tgz#870d0892654fe80e6970a2d680e22521acd2dc19"
+  integrity sha512-CDje4PndhTD2HkgyKH3pab+LKspDeB/NhPN2OF1j+piYIamQqBYwAXWESOT1Yju2xFg51bRW9sUng2WxDjzArw==
   dependencies:
-    swagger-ui-dist "^3.18.1"
+    swagger-ui-dist ">=4.11.0"
 
 symbol-tree@^3.2.4:
   version "3.2.4"
